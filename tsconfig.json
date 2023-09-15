@@ -8,6 +8,7 @@
     "allowImportingTsExtensions": true,
     "noEmit": true,
     "composite": true,
+    "outDir": "./dist",
     "strict": true,
     "downlevelIteration": true,
     "skipLibCheck": true,
