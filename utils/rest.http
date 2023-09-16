@@ -1,0 +1,21 @@
+GET http://localhost:8000/404
+Accept: application/json
+Content-Type: application/json
+
+GET http://localhost:8000/hello
+Content-Type: application/json
+
+POST http://localhost:8000/json/walk
+Content-Type: application/json
+
+< ./json/medium.json
+
+POST http://localhost:8000/json/copy
+Content-Type: application/json
+
+< ./json/medium.json
+
+POST http://localhost:8000/json/struct
+Content-Type: application/json
+
+< ./json/medium.json
