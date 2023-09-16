@@ -70,7 +70,7 @@ elif [[ $1 == *"rust"* ]]
 then
   cd $1
   cargo build --release
-  ./target/release/$1 2>/dev/null &
+  ./target/release/$1 &
   pid=$!
 fi
 
@@ -80,6 +80,8 @@ cd ..
 sleep 2
 mkdir -p ./utils/results/$1/$2
 drill -ns --benchmark ./utils/benches/drill.yaml --tags $2 > ./utils/results/$1/$2/temp
+# -n: nanoseconds
+# -s: stats
 
 # separate the data and stats
 pwd=$(pwd)
@@ -95,3 +97,4 @@ mv ./utils/results/$1/$2/graph.jpg ./utils/results/$1/$2/$1-$2.jpg
 
 # kill the server
 pkill -TERM -P $pid
+kill $pid
