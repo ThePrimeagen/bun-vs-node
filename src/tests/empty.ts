@@ -1,4 +1,4 @@
 import { Request } from "express";
 
-export async function empty(req: Request) { }
+export async function run(req: Request) { }
 

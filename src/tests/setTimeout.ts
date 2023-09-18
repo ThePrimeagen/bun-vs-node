@@ -11,7 +11,7 @@ async function count(c: number) {
     }
 }
 
-export async function timeout(req: Request): Promise<string> {
+export async function run(req: Request): Promise<string> {
     await count(+req.body || 10);
     return "";
 }

@@ -1,0 +1,40 @@
+#!/usr/bin/env bash
+
+counter=$1
+tsc -p tsconfig.node.json
+start_node=$(date +%s%N | cut -b1-13)
+
+echo "starting at: $start_node"
+while [ $counter -gt 0 ]
+do
+    node dist/startup.js 1>/dev/null
+    counter=$(( $counter - 1 ))
+done
+end_node=$(date +%s%N | cut -b1-13)
+
+echo "node took: $(( $end_node - $start_node ))"
+
+counter=$1
+start_bun=$(date +%s%N | cut -b1-13)
+
+echo "starting at: $start_bun"
+while [ $counter -gt 0 ]
+do
+    bun --bun dist/startup.js 1>/dev/null
+    counter=$(( $counter - 1 ))
+done
+end_bun=$(date +%s%N | cut -b1-13)
+
+echo "bun took: $(( $end_bun - $start_bun ))"
+
+counter=$1
+start_go=$(date +%s%N | cut -b1-13)
+echo "starting at: $start_go"
+while [ $counter -gt 0 ]
+do
+    ./main 1>/dev/null
+    counter=$(( $counter - 1 ))
+done
+end_go=$(date +%s%N | cut -b1-13)
+
+echo "go took: $(( $end_go - $start_go ))"

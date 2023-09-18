@@ -1,5 +1,6 @@
-export { json } from "./json";
-export { empty } from "./empty";
-export { jsonCopy } from "./json-copy";
-export { structuredCopy } from "./structured-copy";
-export { timeout } from "./setTimeout";
+export * as json from "./json";
+export * as empty from "./empty";
+export * as jsonCopy from "./jsonCopy";
+export * as structuredCopy from "./structuredCopy";
+export * as gc from "./gc";
+export * as timeout from "./setTimeout";

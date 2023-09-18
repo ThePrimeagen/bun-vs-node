@@ -22,8 +22,7 @@ function walkBody(body: any): any {
     return body;
 }
 
-export async function json(req: Request): Promise<string> {
+export async function run(req: Request): Promise<string> {
     const out = JSON.stringify(walkBody(req.body));
     return out;
 }
-
