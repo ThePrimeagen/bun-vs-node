@@ -1,0 +1,38 @@
+concurrency: 16
+iterations: 10000
+
+plan:
+  - name: Call Hello
+    request:
+      method: GET
+      url: 'http://localhost:8000/hello'
+      headers:
+        Accept: application/json
+    tags: [ hello ]
+
+  - name: Json walk
+    request:
+      method: POST
+      url: 'http://localhost:8000/json/walk'
+      headers:
+        Accept: application/json
+      body: '{{ JSON }}'
+    tags: [ json-walk ]
+
+  - name: Json copy
+    request:
+      method: POST
+      url: 'http://localhost:8000/json/copy'
+      headers:
+        Accept: application/json
+      body: '{{ JSON }}'
+    tags: [ json-copy ]
+
+  - name: Json struct
+    request:
+      method: POST
+      url: 'http://localhost:8000/json/struct'
+      headers:
+        Accept: application/json
+      body: '{{ JSON }}'
+    tags: [ json-struct ]
