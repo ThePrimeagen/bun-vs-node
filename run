@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+
+kill -9 $(lsof -ti :42069)
+
+vmrss() {
+    p=$1
+    while true; do sync; cat /proc/$p/status |grep VmRSS|grep -o '[0-9]\+'| awk '{print $1/1024 " MB"}'; sleep 1; done
+}
+
+if [ "$1" == "bun" ]; then
+  echo "Running bun"
+  bun --bun src/index.ts &
+else
+  echo "Running node"
+  node dist/index.js &
+fi
+pid=$!
+
+vmrss $pid | tee $2.mem

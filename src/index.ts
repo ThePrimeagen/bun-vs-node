@@ -12,6 +12,7 @@ type Runnable = {
 const methodList: Record<string, Runnable> = methods as any;
 
 app.use(bodyParser.json());
+app.use(bodyParser.text());
 
 app.post('/', async (req, res) => {
     const method = req.headers["x-method"];
@@ -22,7 +23,7 @@ app.post('/', async (req, res) => {
     }
 
     const out = await found.run(req);
-    res.status(200).send(out);
+    res.status(200).send(String(out));
 });
 
 app.post('/setup', async (req, res) => {

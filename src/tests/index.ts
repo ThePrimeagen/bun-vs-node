@@ -5,3 +5,6 @@ export * as structuredCopy from "./structuredCopy";
 export * as gc from "./gc";
 export * as timeout from "./setTimeout";
 export * as file from "./file";
+export * as regex from "./regex";
+export * as regexLong from "./regexLong";
+export * as parsing from "./parsing";
